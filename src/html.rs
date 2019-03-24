@@ -338,28 +338,7 @@ impl_action! {
     ondragexit(event: DragExitEvent) -> DragExitEvent => |_, event| { event }
     ondrop(event: DragDropEvent) -> DragDropEvent => |_, event| { event }
     oncontextmenu(event: ContextMenuEvent) -> ContextMenuEvent => |_, event| { event }
-    oninput(event: InputEvent) -> InputData => |this: &Element, _| {
-        use stdweb::web::html_element::{InputElement, TextAreaElement};
-        use stdweb::unstable::TryInto;
-        let value = match this.clone().try_into() {
-            Ok(input) => {
-                let input: InputElement = input;
-                input.raw_value()
-            }
-            Err(_e) => {
-                match this.clone().try_into() {
-                    Ok(tae) => {
-                        let tae: TextAreaElement = tae;
-                        tae.value()
-                    }
-                    Err(_e) => {
-                        panic!("only an InputElement or TextAreaElement can have an oninput event listener");
-                    }
-                }
-            }
-        };
-        InputData { value }
-    }
+    oninput(event: InputEvent) -> InputEvent => |_, event| { event }
     onchange(event: ChangeEvent) -> ChangeData => |this: &Element, _| {
         use stdweb::web::{FileList, IElement};
         use stdweb::web::html_element::{InputElement, TextAreaElement, SelectElement};
