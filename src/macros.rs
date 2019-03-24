@@ -187,7 +187,7 @@ macro_rules! html_impl {
         html_impl! { @vtag $stack ((onsubmit) = move | $var: $crate::events::SubmitEvent | $handler, $($tail)*) }
     };
     (@vtag $stack:ident (oninput = | $var:pat | $handler:expr, $($tail:tt)*)) => {
-        html_impl! { @vtag $stack ((oninput) = move | $var: $crate::events::InputData | $handler, $($tail)*) }
+        html_impl! { @vtag $stack ((oninput) = move | $var: $crate::events::InputEvent | $handler, $($tail)*) }
     };
     (@vtag $stack:ident (onchange = | $var:pat | $handler:expr, $($tail:tt)*)) => {
         html_impl! { @vtag $stack ((onchange) = move | $var: $crate::events::ChangeData | $handler, $($tail)*) }
