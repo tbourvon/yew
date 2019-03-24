@@ -138,6 +138,7 @@ pub mod events {
         GotPointerCaptureEvent,
         IKeyboardEvent,
         IMouseEvent,
+        InputEvent,
         IPointerEvent,
         KeyDownEvent,
         KeyPressEvent,
